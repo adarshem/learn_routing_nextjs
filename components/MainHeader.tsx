@@ -1,16 +1,19 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function MainHeader(): React.JSX.Element {
   return (
-    <header>
-      <ul>
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="/news">News</a>
-        </li>
-      </ul>
+    <header id="main-header">
+      <div id="logo">
+        <Link href="/">NextNews</Link>
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <Link href="/news">News</Link>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 }
