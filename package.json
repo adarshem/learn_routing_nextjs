@@ -1,5 +1,5 @@
 {
-  "name": "routing-rendering",
+  "name": "learn_routing_nextjs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,8 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "next": "14.1.0",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.1.0"
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "typescript": "^5"
   }
 }
