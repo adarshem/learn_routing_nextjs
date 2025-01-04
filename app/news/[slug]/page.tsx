@@ -1,4 +1,5 @@
 import React from 'react';
+import { notFound } from 'next/navigation';
 import { DUMMY_NEWS } from '@/dummy-news';
 
 export default function NewsItemPage({
@@ -9,6 +10,13 @@ export default function NewsItemPage({
   };
 }): React.JSX.Element {
   const newsItem = DUMMY_NEWS.find((item) => item.slug === params.slug);
+
+  if (!newsItem) {
+    // Redirect to the 404 page if the news item is not found
+    // https://nextjs.org/docs/app/api-reference/functions/not-found
+    notFound();
+  }
+
   return (
     <article className="news-article">
       <header>
