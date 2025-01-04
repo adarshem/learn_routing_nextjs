@@ -1,9 +1,20 @@
 import React from 'react';
+import Link from 'next/link';
+import { getAvailableNewsYears } from '@/lib/news';
+
 export default function ArchivePage(): React.JSX.Element {
+  const availableYears = getAvailableNewsYears();
   return (
-    <div>
-      <h1>Archive</h1>
-      <p>This is the archive page.</p>
-    </div>
+    <header id="archive-header">
+      <nav>
+        <ul>
+          {availableYears.map((year) => (
+            <li key={year}>
+              <Link href={`/archive/${year}`}>{year}</Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
   );
 }
