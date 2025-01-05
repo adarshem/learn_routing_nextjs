@@ -1,6 +1,8 @@
 # learn_routing_nextjs
 
-Welcome to the **learn_routing_nextjs** project! This repository is a demo project where I am diving deep into the routing and page rendering capabilities of Next.js. The goal is to understand and master the various aspects of Next.js routing, including dynamic routes, nested routes, and custom 404 pages.
+Welcome to the **learn_routing_nextjs** project! This repository is a demo project where I am diving deep into Next.js's routing and page rendering capabilities. The goal is to understand and master the various aspects of Next.js routing, including dynamic routes, nested routes, and custom 404 pages.
+
+![nextjs_routing](https://github.com/user-attachments/assets/227768c2-0234-4180-a717-51521b1100da)
 
 
 ## Table of Contents
