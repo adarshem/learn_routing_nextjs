@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import NavLink from '@/components/NavLink';
 
 export default function MainHeader(): React.JSX.Element {
   return (
@@ -10,7 +11,10 @@ export default function MainHeader(): React.JSX.Element {
       <nav>
         <ul>
           <li>
-            <Link href="/news">News</Link>
+            <NavLink href="/news">News</NavLink>
+          </li>
+          <li>
+            <NavLink href="/archive">Archive</NavLink>
           </li>
         </ul>
       </nav>
