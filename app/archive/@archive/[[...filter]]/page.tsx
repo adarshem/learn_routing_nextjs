@@ -31,6 +31,15 @@ export default function FilteredNewsPage({
     links = [];
   }
 
+  if (
+    (selectedMonth &&
+      !getAvailableNewsYears().includes(Number(selectedYear))) ||
+    (selectedMonth &&
+      !getAvailableNewsMonths(selectedYear).includes(Number(selectedMonth)))
+  ) {
+    throw new Error('Invalid year or month');
+  }
+
   return (
     <>
       <header id="archive-header">
