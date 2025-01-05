@@ -1,5 +1,7 @@
+'use client';
+
 import { DUMMY_NEWS } from '@/dummy-news';
-import { notFound } from 'next/navigation';
+import { notFound, useRouter } from 'next/navigation';
 
 //https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes
 export default function InterceptedImagePage({
@@ -7,6 +9,8 @@ export default function InterceptedImagePage({
 }: {
   params: { slug: string };
 }): React.JSX.Element {
+  const router = useRouter();
+
   const newsItem = DUMMY_NEWS.find((item) => item.slug === params?.slug);
 
   if (!newsItem) {
@@ -17,7 +21,7 @@ export default function InterceptedImagePage({
 
   return (
     <>
-      <div className="modal-backdrop" />
+      <div className="modal-backdrop" onClick={router.back} />
       <dialog className="modal" open>
         <div className="fullscreen-image">
           <img src={`/images/news/${newsItem.image}`} alt={newsItem.title} />
