@@ -1,5 +1,5 @@
 import React from 'react';
-import './globals.css';
+import '../globals.css';
 import MainHeader from '@/components/MainHeader';
 
 export const metadata = {
@@ -15,8 +15,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <MainHeader />
-        {children}
+        <div id="page">
+          <MainHeader />
+          {children}
+        </div>
       </body>
     </html>
   );
