@@ -1,37 +1,14 @@
-'use client';
-
-import React, { useEffect, useState } from 'react';
 import NewsList from '@/components/NewsList';
 
-export default function NewsPage(): React.JSX.Element {
-  const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [news, setNews] = useState([]);
+// Fetching data directly inside the component
+export default async function NewsPage(): Promise<React.JSX.Element> {
+  const resp = await fetch('http://localhost:8080/news');
 
-  useEffect(() => {
-    async function fetchNews() {
-      setIsLoading(true);
-      const resp = await fetch('http://localhost:8080/news');
-      if (!resp.ok) {
-        setError('Failed to fetch news');
-        setIsLoading(false);
-      }
-
-      const newsData = await resp.json();
-      setIsLoading(false);
-      setNews(newsData);
-    }
-
-    fetchNews();
-  }, []);
-
-  if (isLoading) {
-    return <p>Loading...</p>;
+  if (!resp.ok) {
+    throw new Error('faled to fetch news');
   }
 
-  if (error) {
-    return <p>{error}</p>;
-  }
+  const news = await resp.json();
 
   return (
     <div id="news">
