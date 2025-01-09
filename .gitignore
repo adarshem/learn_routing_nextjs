@@ -39,3 +39,6 @@ next-env.d.ts
 *.db
 *.db-wal
 *.db-shm
+
+# node_modules for backend
+backend/node_modules/
