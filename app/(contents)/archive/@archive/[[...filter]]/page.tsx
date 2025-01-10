@@ -11,31 +11,31 @@ import { News } from '@/types/news';
 
 // https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#optional-catch-all-segments
 
-export default function FilteredNewsPage({
+export default async function FilteredNewsPage({
   params,
 }: {
   params: { filter: string[] };
-}): React.JSX.Element {
+}): Promise<React.JSX.Element> {
   const selectedYear = params.filter?.[0];
   const selectedMonth = params.filter?.[1];
   let news: News[] | undefined;
-  let links = getAvailableNewsYears();
+  let links = await getAvailableNewsYears();
 
   if (selectedYear && !selectedMonth) {
-    news = getNewsForYear(selectedYear);
+    news = await getNewsForYear(selectedYear);
     links = getAvailableNewsMonths(selectedYear);
   }
 
   if (selectedYear && selectedMonth) {
-    news = getNewsForYearAndMonth(selectedYear, selectedMonth);
+    news = await getNewsForYearAndMonth(selectedYear, selectedMonth);
     links = [];
   }
 
   if (
     (selectedMonth &&
-      !getAvailableNewsYears().includes(Number(selectedYear))) ||
+      !(await getAvailableNewsYears()).includes(selectedYear)) ||
     (selectedMonth &&
-      !getAvailableNewsMonths(selectedYear).includes(Number(selectedMonth)))
+      !getAvailableNewsMonths(selectedYear).includes(selectedMonth))
   ) {
     throw new Error('Invalid year or month');
   }

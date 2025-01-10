@@ -1,16 +1,16 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { DUMMY_NEWS } from '@/dummy-news';
+import { getNewsItem } from '@/lib/news';
 
-export default function NewsItemPage({
+export default async function NewsItemPage({
   params,
 }: {
   params: {
     slug: string;
   };
-}): React.JSX.Element {
-  const newsItem = DUMMY_NEWS.find((item) => item.slug === params.slug);
+}): Promise<React.JSX.Element> {
+  const newsItem = await getNewsItem(params.slug);
 
   if (!newsItem) {
     // Redirect to the 404 page if the news item is not found
