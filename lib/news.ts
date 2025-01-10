@@ -1,7 +1,5 @@
 import sql from 'better-sqlite3';
-import { DUMMY_NEWS } from '@/dummy-news';
 import { News } from '@/types/news';
-import { resolve } from 'path';
 
 const db = sql('data.db');
 
